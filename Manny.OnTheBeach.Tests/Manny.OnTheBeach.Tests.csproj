@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Manny.OnTheBeach.FileReader\Manny.OnTheBeach.FileReader.csproj" />
     <ProjectReference Include="..\Manny.OnTheBeach.Models\Manny.OnTheBeach.Models.csproj" />
+    <ProjectReference Include="..\Manny.OnTheBeach.Search\Manny.OnTheBeach.Search.csproj" />
   </ItemGroup>
 
 </Project>

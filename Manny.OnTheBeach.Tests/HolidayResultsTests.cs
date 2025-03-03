@@ -1,4 +1,5 @@
-﻿using Manny.OnTheBeach.Models.Data;
+﻿using Manny.OnTheBeach.Models;
+using Manny.OnTheBeach.Search;
 using NUnit.Framework;
 
 namespace Manny.OnTheBeach.Tests
@@ -30,8 +31,6 @@ namespace Manny.OnTheBeach.Tests
             Assert.That(bestResult.Flight.Id, Is.EqualTo(2));
             Assert.That(bestResult.Hotel.Id, Is.EqualTo(9));
             Assert.That(results, Is.InstanceOf<List<HolidaySearchResults>>());
-
-            /* Flight 2 and Hotel 9*/
         }
     }
 }
