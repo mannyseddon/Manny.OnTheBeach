@@ -35,5 +35,16 @@ namespace Manny.OnTheBeach.Tests
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Count, Is.EqualTo(13));
         }
+
+        [Test]
+        public async Task GetDataFromFileAsync_Combined_ReturnsExpectedData()
+        {
+            // Act
+            var result = await FullFilePath.GetDataFromFileAsync<Hotel>();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(13));
+        }
     }
 }
