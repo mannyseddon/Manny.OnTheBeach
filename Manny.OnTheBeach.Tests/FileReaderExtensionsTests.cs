@@ -13,7 +13,7 @@ namespace Manny.OnTheBeach.Tests
         [Test]
         public void ReadFile_ValidFilePath_ReturnsFileStream()
         {
-            // Act & Assert
+            // Arrange & Act
             using (var result = FullFilePath.ReadFile())
             {
                 // Assert
@@ -25,26 +25,27 @@ namespace Manny.OnTheBeach.Tests
         [Test]
         public async Task GetDataFromFileAsync_ValidFile_ReturnsExpectedData()
         {
-            // Act
-            var result = new List<Hotel>();
+            // Arrange
+            var results = new List<Hotel>();
 
+            // Act
             var stream = FullFilePath.ReadFile();
-            result = await stream.ConvertToListAsync<Hotel>();
+            results = await stream.ConvertToListAsync<Hotel>();
 
             // Assert
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.Count, Is.EqualTo(13));
+            Assert.That(results, Is.Not.Null);
+            Assert.That(results.Count, Is.EqualTo(13));
         }
 
         [Test]
         public async Task GetDataFromFileAsync_Combined_ReturnsExpectedData()
         {
-            // Act
-            var result = await FullFilePath.GetDataFromFileAsync<Hotel>();
+            // Arrange & Act
+            var results = await FullFilePath.GetDataFromFileAsync<Hotel>();
 
             // Assert
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.Count, Is.EqualTo(13));
+            Assert.That(results, Is.Not.Null);
+            Assert.That(results.Count, Is.EqualTo(13));
         }
     }
 }
