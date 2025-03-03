@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Manny.OnTheBeach.FileReader;
+using NUnit.Framework;
 
 namespace Manny.OnTheBeach.Tests
 {
@@ -6,12 +7,13 @@ namespace Manny.OnTheBeach.Tests
     public class FileReaderExtensionsTests
     {
         private const string TestFilePath = "hotels.json";
+        private static readonly string FullFilePath = Path.Combine(@"..\..\..\..\", TestFilePath);
 
         [Test]
         public void ReadFile_ValidFilePath_ReturnsFileStream()
         {
             // Act & Assert
-            using (var result = TestFilePath.ReadFile())
+            using (var result = FullFilePath.ReadFile())
             {
                 // Assert
                 Assert.That(result, Is.Not.Null);
