@@ -20,5 +20,19 @@ namespace Manny.OnTheBeach.Tests
                 Assert.That(result, Is.InstanceOf<FileStream>());
             }
         }
+
+        [Test]
+        public async Task GetDataFromFileAsync_ValidFile_ReturnsExpectedData()
+        {
+            // Act
+            var result = new List<Hotel>();
+
+            var stream = FullFilePath.ReadFile();
+            result = await stream.ConvertToListAsync<Hotel>();
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(13));
+        }
     }
 }
