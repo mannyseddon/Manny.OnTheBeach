@@ -1,6 +1,6 @@
 ﻿namespace Manny.OnTheBeach.FileReader
 {
-    public class Class1
+    public static class FileReaderExtensions
     {
 
     }
