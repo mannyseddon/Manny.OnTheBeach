@@ -4,6 +4,12 @@ namespace Manny.OnTheBeach.FileReader
 {
     public static class FileReaderExtensions
     {
+        public static async Task<List<T>> GetDataFromFileAsync<T>(this string filePath)
+        {
+            var data = await filePath.ReadFile().ConvertToListAsync<T>();
+
+            return data;
+        }
 
         public static FileStream ReadFile(this string filePath)
         {
