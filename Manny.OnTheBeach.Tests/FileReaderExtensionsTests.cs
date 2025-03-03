@@ -1,4 +1,5 @@
 ﻿using Manny.OnTheBeach.FileReader;
+using Manny.OnTheBeach.Models.Data;
 using NUnit.Framework;
 
 namespace Manny.OnTheBeach.Tests
