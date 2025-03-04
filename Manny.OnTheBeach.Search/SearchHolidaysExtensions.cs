@@ -18,8 +18,8 @@ namespace Manny.OnTheBeach.Search
             var flights = await flightsData.GetDataFromFileAsync<Flight>();
             var hotels = await hotelsData.GetDataFromFileAsync<Hotel>();
 
-            var matchingFlights = flights.Where(flight => flight.DepartureDate == requirements.DepartureDate && flight.From == requirements.DepartingFrom && flight.To == requirements.TravelingTo).ToList();
-
+            var matchingFlights = flights.Where(flight => flight.DepartureDate == requirements.DepartureDate && (!requirements.DepartingFrom.Any() || (requirements.DepartingFrom.Any() && requirements.DepartingFrom.Contains(flight.From))) && flight.To == requirements.TravelingTo).ToList();
+            
             var matchingHotels = hotels.Where(hotel => hotel.ArrivalDate == requirements.DepartureDate && hotel.LocalAirports.Contains(requirements.TravelingTo) && hotel.Nights == requirements.Duration).ToList();
 
             var results = matchingFlights
@@ -29,7 +29,7 @@ namespace Manny.OnTheBeach.Search
                     Hotel = hotel
                     //Total calculated by model
                 })
-                .OrderBy(r => r.TotalPrice)
+                .OrderBy(result => result.TotalPrice)
                 .ToList();
 
             return results;
