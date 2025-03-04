@@ -1,6 +1,4 @@
-﻿using Manny.OnTheBeach.Models.Data;
-
-namespace Manny.OnTheBeach.Models;
+﻿namespace Manny.OnTheBeach.Models;
 
 public class HolidaySearchResults
 {
