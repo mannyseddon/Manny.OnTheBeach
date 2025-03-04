@@ -2,7 +2,7 @@
 
 namespace Manny.OnTheBeach.Models.Data
 {
-    public class Hotel
+    public class HotelData
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }

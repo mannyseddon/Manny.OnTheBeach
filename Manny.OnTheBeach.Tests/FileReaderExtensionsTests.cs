@@ -26,11 +26,11 @@ namespace Manny.OnTheBeach.Tests
         public async Task GetDataFromFileAsync_ValidFile_ReturnsExpectedData()
         {
             // Arrange
-            var results = new List<Hotel>();
+            var results = new List<HotelData>();
 
             // Act
             var stream = FullFilePath.ReadFile();
-            results = await stream.ConvertToListAsync<Hotel>();
+            results = await stream.ConvertToListAsync<HotelData>();
 
             // Assert
             Assert.That(results, Is.Not.Null);
@@ -41,7 +41,7 @@ namespace Manny.OnTheBeach.Tests
         public async Task GetDataFromFileAsync_Combined_ReturnsExpectedData()
         {
             // Arrange & Act
-            var results = await FullFilePath.GetDataFromFileAsync<Hotel>();
+            var results = await FullFilePath.GetDataFromFileAsync<HotelData>();
 
             // Assert
             Assert.That(results, Is.Not.Null);

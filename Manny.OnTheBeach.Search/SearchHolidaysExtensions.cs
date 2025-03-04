@@ -1,6 +1,7 @@
 ﻿using Manny.OnTheBeach.FileReader;
 using Manny.OnTheBeach.Models;
 using Manny.OnTheBeach.Models.Data;
+using Manny.OnTheBeach.Models.Mapper;
 
 namespace Manny.OnTheBeach.Search
 {
@@ -15,8 +16,8 @@ namespace Manny.OnTheBeach.Search
             var flightsData = Path.Combine(LocalFilePath, FlightsFilePath);
             var hotelsData = Path.Combine(LocalFilePath, HotelsFilePath);
 
-            var flights = await flightsData.GetDataFromFileAsync<Flight>();
-            var hotels = await hotelsData.GetDataFromFileAsync<Hotel>();
+            var flights = await flightsData.GetDataFromFileAsync<FlightData>();
+            var hotels = await hotelsData.GetDataFromFileAsync<HotelData>();
 
             var matchingFlights = flights.Where(flight => flight.DepartureDate == requirements.DepartureDate && (!requirements.DepartingFrom.Any() || (requirements.DepartingFrom.Any() && requirements.DepartingFrom.Contains(flight.From))) && flight.To == requirements.TravelingTo).ToList();
             
@@ -25,8 +26,8 @@ namespace Manny.OnTheBeach.Search
             var results = matchingFlights
                 .SelectMany(flight => matchingHotels, (flight, hotel) => new HolidaySearchResults
                 {
-                    Flight = flight,
-                    Hotel = hotel
+                    Flight = flight.Mapper(),
+                    Hotel = hotel.Mapper()
                     //Total calculated by model
                 })
                 .OrderBy(result => result.TotalPrice)
